@@ -10,11 +10,14 @@ param(
 $ErrorActionPreference = "Stop"
 Set-Location (Join-Path $PSScriptRoot "..")
 
+# Non-interactive SSH (if remote uses git@github.com)
+$env:GIT_SSH_COMMAND = "ssh -o StrictHostKeyChecking=accept-new -o BatchMode=yes"
+
 function Invoke-Git {
-    param([string[]]$Args)
-    Write-Host ">> git $($Args -join ' ')" -ForegroundColor Cyan
-    & git @Args
-    if ($LASTEXITCODE -ne 0) { throw "git failed: git $($Args -join ' ')" }
+    param([string[]]$GitArgs)
+    Write-Host ">> git $($GitArgs -join ' ')" -ForegroundColor Cyan
+    & git @GitArgs
+    if ($LASTEXITCODE -ne 0) { throw "git failed: git $($GitArgs -join ' ')" }
 }
 
 Write-Host "`n=== HDWS GitHub Sync & Push ===`n" -ForegroundColor Green
