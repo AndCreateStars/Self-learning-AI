@@ -1,4 +1,4 @@
-# learning-AI / HDWS
+# Self-learning-AI / HDWS
 
 层级子空间路由（Hierarchical Dynamic Weight Subspaces）原型。
 
@@ -22,7 +22,7 @@ python verify.py
 
 ## 推送到 GitHub
 
-仓库：<https://github.com/AndCreateStars/learning-AI>
+仓库：<https://github.com/AndCreateStars/Self-learning-AI>
 
 ```powershell
 # 方式 1：一键脚本（推荐）
@@ -43,7 +43,7 @@ Git 推送失败时按顺序尝试：
 
 1. 重试 2～3 次（网络偶发不稳定）
 2. 配置系统代理后重试
-3. 改用 SSH：`git remote set-url origin git@github.com:AndCreateStars/learning-AI.git`
+3. 改用 SSH：`git remote set-url origin git@github.com:AndCreateStars/Self-learning-AI.git`
 4. 兜底：在 GitHub 网页 **Add file → Upload files** 上传改动
 
 **切勿**把 Token 写进 `git remote` URL，用 Git Credential Manager 或环境变量 `GITHUB_TOKEN`。
