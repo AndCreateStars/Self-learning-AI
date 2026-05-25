@@ -23,7 +23,7 @@ Write-Host "`n=== HDWS GitHub Sync & Push ===`n" -ForegroundColor Green
 if (Get-Command python -ErrorAction SilentlyContinue) {
     Write-Host "Running verify.py ..." -ForegroundColor Yellow
     python verify.py
-    if ($LASTEXITCODE -ne 0) { throw "verify.py failed — fix before pushing" }
+    if ($LASTEXITCODE -ne 0) { throw "verify.py failed - fix before pushing" }
 }
 
 # Step 2: fetch + rebase
