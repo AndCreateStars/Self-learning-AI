@@ -1,0 +1,57 @@
+# GitHub 上传流程
+
+本仓库远程地址：`https://github.com/AndCreateStars/learning-AI.git`
+
+## 用户说「帮我上传 / 推送到 GitHub」时
+
+按以下顺序执行，不要跳步：
+
+### 1. 提交前检查
+
+- 运行 `python verify.py`，必须通过
+- `git status` 确认无 `.env`、Token、密钥文件
+
+### 2. 同步远程（每次推送前必做）
+
+```powershell
+git fetch origin
+git pull origin main --rebase
+```
+
+若 rebase 冲突：解决后 `git rebase --continue`。
+
+若 `Connection was reset`：重试 2～3 次；仍失败则告知用户改用网页上传或配置代理/SSH，**不要** force push。
+
+### 3. 提交
+
+- 仅在有改动时 commit
+- 提交信息简洁，说明「为什么改」（中文或英文均可）
+- **未经用户明确要求，不要 commit**
+
+### 4. 推送
+
+```powershell
+git push origin main
+```
+
+或运行 `.\scripts\sync-and-push.ps1 -Message "..."`
+
+### 5. 推送失败兜底
+
+告知用户：
+
+1. 错误类型（网络 / 认证 / 冲突）
+2. 可手动在 GitHub 网页上传的文件列表
+3. 是否需要一次性修复（配 Token、SSH、代理）
+
+## 安全规则
+
+- **禁止** 在 `git remote` URL 中嵌入 Token
+- **禁止** `git push --force` 到 main，除非用户明确要求
+- **禁止** 提交 `.env`、credentials、真实 Token
+
+## 仓库信息
+
+- 分支：`main`
+- 核心文件：`subspace.py`、`space_router.py`、`verify.py`
+- 依赖：`pip install -r requirements.txt`
